@@ -1,5 +1,7 @@
 <script>
   import FilterButton from "./FilterButton.svelte";
+  import Quote from "./Quote.svelte";
+
   export let quotes = []
   
   let newQuoteName = ''
@@ -23,6 +25,10 @@
     filter === 'selected' ? quotes.filter(q => q.selected) : 
     quotes
 
+    function updateQuote(quote) {
+    const i = quotes.findIndex((q) => q.id === quotes.id);
+    quotes[i] = { ...quotes[i], ...quote };
+  }
 </script>
 
 <!-- Quotes.svelte -->
@@ -48,35 +54,16 @@
   <h2 id="list-heading">{selectedQuotes} out of {totalQuotes} quotes selected</h2>
 
   <!-- quotes -->
-  <ul role="list" class="quotes-list stack-large" aria-labelledby="list-heading">
-  {#each filterQuotes(filter, quotes) as quote (quote.id)}
-    <li class="quotes">
-      <div class="stack-small">
-        <div class="c-cb">
-            <input type="checkbox" id="quote-{quote.id}"
-              on:click={() => quote.selected = !quote.selected}
-              checked={quote.selected}
-            />          
-            <label for="quote-{quote.id}" class="quote-label">
-            {quote.name}
-          </label>
-        </div>
-        <div class="btn-group">
-          <button type="button" class="btn">
-            Edit <span class="visually-hidden">{quote.name}</span>
-          </button>
-          <button type="button" class="btn btn__danger"
-            on:click={() => removeQuote(quote)}
-          >
-            Delete <span class="visually-hidden">{quote.name}</span>
-          </button>
-        </div>
-      </div>
+  <ul class="quote-list stack-large" aria-labelledby="list-heading">
+    {#each filterQuotes(filter, quotes) as quote (quote.id)}
+    <li class="todo">
+      <Quote {quote} on:remove={(e) => removeQuote(e.detail)} />
     </li>
-  {:else}
-    <li>Get Motivated!</li>
-  {/each}
+    {:else}
+    <li>Nothing to do here!</li>
+    {/each}
   </ul>
+  
 
   <hr />
 
