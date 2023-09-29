@@ -1,4 +1,3 @@
-<!-- components/Quotes.svelte -->
 <script>
   import FilterButton from './FilterButton.svelte'
   import Quote from './Quote.svelte'
@@ -62,7 +61,7 @@
       />
     </li>
   {:else}
-    <li>Nothing to do here!</li>
+    <li>Pick your motivation!</li>
   {/each}
   </ul>
 

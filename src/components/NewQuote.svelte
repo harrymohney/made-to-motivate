@@ -26,7 +26,7 @@
 
 <form on:submit|preventDefault={addQuote} on:keydown={e => e.key === 'Escape' && onCancel()}>
   <h2 class="label-wrapper">
-    <label for="quote-0" class="label__lg">What needs to be done?</label>
+    <label for="quote-0" class="label__lg">What motivates you?</label>
   </h2>
   <input bind:value={name} bind:this={nameEl} use:selectOnFocus 
     type="text" id="quote-0" autoComplete="off" class="input input__lg" 

@@ -20,5 +20,5 @@
   <button type="button" class="btn btn__primary" 
     disabled={quotes.length === 0} on:click={checkAll}>{completed ? 'Check' : 'Uncheck'} all</button>
   <button type="button" class="btn btn__primary" 
-    disabled={completedQuotes === 0} on:click={removeCompleted}>Remove completed</button>
+    disabled={completedQuotes === 0} on:click={removeCompleted}>Remove selected</button>
 </div>
