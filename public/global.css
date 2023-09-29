@@ -214,7 +214,7 @@ body {
   width: 100%;
   margin: unset auto;
 }
-/* Todo item styles */
+/* quote item styles */
 .quote {
   display: flex;
   flex-direction: row;

@@ -1,4 +1,5 @@
 <script>
+  import FilterButton from "./FilterButton.svelte";
   export let quotes = []
   
   let newQuoteName = ''
@@ -18,8 +19,8 @@
 
   let filter = 'all'
   const filterQuotes = (filter, quotes) => 
-    filter === 'active' ? quotes.filter(t => !q.selected) :
-    filter === 'selected' ? quotes.filter(t => q.selected) : 
+    filter === 'active' ? quotes.filter(q => !q.selected) :
+    filter === 'selected' ? quotes.filter(q => q.selected) : 
     quotes
 
 </script>
@@ -41,36 +42,20 @@
   </form>
 
   <!-- Filter -->
-  <div class="filters btn-group stack-exception">
-    <button class="btn toggle-btn" class:btn__primary={filter === 'all'} aria-pressed={filter === 'all'} on:click={()=> filter = 'all'} >
-      <span class="visually-hidden">Show</span>
-      <span>All</span>
-      <span class="visually-hidden">tasks</span>
-    </button>
-    <button class="btn toggle-btn" class:btn__primary={filter === 'active'} aria-pressed={filter === 'active'} on:click={()=> filter = 'active'} >
-      <span class="visually-hidden">Show</span>
-      <span>Active</span>
-      <span class="visually-hidden">Motivation</span>
-    </button>
-    <button class="btn toggle-btn" class:btn__primary={filter === 'selected'} aria-pressed={filter === 'selected'} on:click={()=> filter = 'selected'} >
-      <span class="visually-hidden">Show</span>    
-      <span>Selected</span>
-      <span class="visually-hidden">tasks</span>
-    </button>
-  </div>
+  <FilterButton bind:filter={filter} />
 
-  <!-- TodosStatus -->
+  <!-- QuotesStatus -->
   <h2 id="list-heading">{selectedQuotes} out of {totalQuotes} quotes selected</h2>
 
   <!-- quotes -->
   <ul role="list" class="quotes-list stack-large" aria-labelledby="list-heading">
-  {#each filterQuotes(filter, quotes) as quotes (quotes.id)}
+  {#each filterQuotes(filter, quotes) as quote (quote.id)}
     <li class="quotes">
       <div class="stack-small">
         <div class="c-cb">
-            <input type="checkbox" id="todo-{quote.id}"
-              on:click={() => quote.completed = !quote.completed}
-              checked={quote.completed}
+            <input type="checkbox" id="quote-{quote.id}"
+              on:click={() => quote.selected = !quote.selected}
+              checked={quote.selected}
             />          
             <label for="quote-{quote.id}" class="quote-label">
             {quote.name}
