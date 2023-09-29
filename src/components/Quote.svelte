@@ -1,47 +1,59 @@
 <script>
-  import { createEventDispatcher } from "svelte";
-  const dispatch = createEventDispatcher();
+  // import { tick } from 'svelte'
+  import { createEventDispatcher } from 'svelte'
+  const dispatch = createEventDispatcher()
+
+  import { selectOnFocus } from '../actions.js'
+
   export let quote
-  let editing = false; // track editing mode
-  let name = quote.name; // hold the name
+
+  let editing = false                     // track editing mode
+  let name = quote.name                    // hold the name of the quote being edited
+
+  let editButtonPressed = false           // track if edit button has been pressed, to give focus to it after cancel or save
+
   function update(updatedQuote) {
-  quote = { ...quote, ...updatedQuote }; // applies modifications to quote
-  dispatch("update", quote); // emit update event
-}
-function onCancel() {
-  name = quote.name; // restores name to its initial value and
-  editing = false; // and exit editing mode
-}
+    quote = { ...quote, ...updatedQuote }    // applies modifications to quote
+    dispatch('update', quote)              // emit update event
+  }
 
-function onSave() {
-  update({ name }); // updates quote name
-  editing = false; // and exit editing mode
-}
+  function onCancel() {
+    name = quote.name                      // restores name to its initial value and
+    editing = false                       // and exit editing mode
+  }
 
-function onRemove() {
-  dispatch("remove", quote); // emit remove event
-}
+  function onSave() {
+    update({ name: name })                // updates quote name
+    editing = false                       // and exit editing mode
+  }
 
-function onEdit() {
-  editing = true; // enter editing mode
-}
+  function onRemove() {
+    dispatch('remove', quote)              // emit remove event
+  }
 
-function onToggle() {
-  update({ completed: !quote.completed }); // updates quote status
-}
-{#each filterQuotes(filter, quotes) as quote (quote.id)}
-<li class="quote">
-  <Todo {quote} on:update={(e) => updateTodo(e.detail)} on:remove={(e) =>
-  removeTodo(e.detail)} />
-</li>
+  function onEdit() {
+    editButtonPressed = true              // user pressed the Edit button, focus will come back to the Edit button
+    editing = true                        // enter editing mode
+  }
+
+  function onToggle() {
+    update({ completed: !quote.completed}) // updates quote status
+  }
+
+  const focusOnInit = (node) => node && typeof node.focus === 'function' && node.focus()
+
+  const focusEditButton = (node) => editButtonPressed && node.focus()
+
 </script>
+
 <div class="stack-small">
 {#if editing}
-  <!-- markup for editing quotes: label, input text, Cancel and Save Button -->
-  <form on:submit|preventDefault={onSave} class="stack-small" on:keydown={(e) => e.key === 'Escape' && onCancel()}>
+  <!-- markup for editing quote: label, input text, Cancel and Save Button -->
+  <form on:submit|preventDefault={onSave} class="stack-small" on:keydown={e => e.key === 'Escape' && onCancel()}>
     <div class="form-group">
       <label for="quote-{quote.id}" class="quote-label">New name for '{quote.name}'</label>
-      <input bind:value={name} type="text" id="quote-{quote.id}" autoComplete="off" class="quote-text" />
+      <input bind:value={name} use:selectOnFocus use:focusOnInit type="text" id="quote-{quote.id}" autoComplete="off" class="quote-text"
+      />
     </div>
     <div class="btn-group">
       <button class="btn quote-cancel" on:click={onCancel} type="button">
@@ -61,7 +73,7 @@ function onToggle() {
     <label for="quote-{quote.id}" class="quote-label">{quote.name}</label>
   </div>
   <div class="btn-group">
-    <button type="button" class="btn" on:click={onEdit}>
+    <button type="button" class="btn" on:click={onEdit} use:focusEditButton>
       Edit<span class="visually-hidden"> {quote.name}</span>
     </button>
     <button type="button" class="btn btn__danger" on:click={onRemove}>

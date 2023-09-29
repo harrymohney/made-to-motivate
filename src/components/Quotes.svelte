@@ -1,76 +1,77 @@
+<!-- components/Quotes.svelte -->
 <script>
-  import FilterButton from "./FilterButton.svelte";
-  import Quote from "./Quote.svelte";
-
-  export let quotes = []
+  import FilterButton from './FilterButton.svelte'
+  import Quote from './Quote.svelte'
+  import MoreActions from './MoreActions.svelte'
+  import NewQuote from './NewQuote.svelte'  
+  import QuotesStatus from './QuotesStatus.svelte'
   
-  let newQuoteName = ''
-  $: newQuoteId = totalQuotes ? Math.max(...quotes.map(q => q.id)) + 1 : 1
+  export let quotes = []
 
-  $: totalQuotes = quotes.length
-  $: selectedQuotes = quotes.filter(quote => quote.selected).length
+  let quotesStatus                   // reference to QuotesStatus instance
+
+  $: newQuoteId = quotes.length ? Math.max(...quotes.map(q => q.id)) + 1 : 1
 
   function removeQuote(quote) {
-    quotes = quotes.filter(t => q.id !== quote.id)
+    quotes = quotes.filter(q => q.id !== quote.id)
+    quotesStatus.focus()             // give focus to status heading
   }
 
-  function addQuote() {
-    quotes = [...quotes, { id: newQuoteId, name: newQuoteName, selected: false }]
-    newQuoteName = ''
+  function addQuote(name) {
+    quotes = [...quotes, { id: newQuoteId, name, completed: false }]
+  }
+
+  function updateQuote(quote) {
+    const i = quotes.findIndex(q => q.id === quote.id)
+    quotes[i] = { ...quotes[i], ...quote }
   }
 
   let filter = 'all'
   const filterQuotes = (filter, quotes) => 
-    filter === 'active' ? quotes.filter(q => !q.selected) :
-    filter === 'selected' ? quotes.filter(q => q.selected) : 
+    filter === 'active' ? quotes.filter(q => !q.completed) :
+    filter === 'completed' ? quotes.filter(q => q.completed) : 
     quotes
 
-    function updateQuote(quote) {
-    const i = quotes.findIndex((q) => q.id === quotes.id);
-    quotes[i] = { ...quotes[i], ...quote };
+  const checkAllQuotes = (completed) => {
+    quotes = quotes.map(q => ({...q, completed}))
   }
+
+  const removeCompletedQuotes = () => quotes = quotes.filter(q => !q.completed)
+
 </script>
 
 <!-- Quotes.svelte -->
 <div class="quoteapp stack-large">
 
   <!-- NewQuote -->
-  <form on:submit|preventDefault={addQuote}>
-    <h2 class="label-wrapper">
-      <label for="quote-0" class="label__lg">
-        What motivates you?
-      </label>
-    </h2>
-    <input bind:value={newQuoteName} type="text" id="quote-0" autocomplete="off" class="input input__lg" />
-    <button type="submit" disabled="" class="btn btn__primary btn__lg">
-      Add
-    </button>
-  </form>
+  <NewQuote autofocus on:addQuote={e => addQuote(e.detail)} />
 
   <!-- Filter -->
-  <FilterButton bind:filter={filter} />
+  <FilterButton bind:filter />
 
   <!-- QuotesStatus -->
-  <h2 id="list-heading">{selectedQuotes} out of {totalQuotes} quotes selected</h2>
+  <QuotesStatus bind:this={quotesStatus} {quotes} />
 
-  <!-- quotes -->
+  <!-- Quotes -->
   <ul class="quote-list stack-large" aria-labelledby="list-heading">
-    {#each filterQuotes(filter, quotes) as quote (quote.id)}
-    <li class="todo">
-      <Quote {quote} on:remove={(e) => removeQuote(e.detail)} />
+  {#each filterQuotes(filter, quotes) as quote (quote.id)}
+    <li class="quote">
+      <Quote {quote}
+        on:update={e => updateQuote(e.detail)}
+        on:remove={e => removeQuote(e.detail)}
+      />
     </li>
-    {:else}
+  {:else}
     <li>Nothing to do here!</li>
-    {/each}
+  {/each}
   </ul>
-  
 
   <hr />
 
   <!-- MoreActions -->
-  <div class="btn-group">
-    <button type="button" class="btn btn__primary">Check all</button>
-    <button type="button" class="btn btn__primary">Reset all</button>
-  </div>
+  <MoreActions {quotes}
+    on:checkAll={e => checkAllQuotes(e.detail)}
+    on:removeCompleted={removeCompletedQuotes}
+  />
 
 </div>
