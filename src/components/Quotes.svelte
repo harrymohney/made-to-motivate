@@ -4,9 +4,11 @@
   import MoreActions from './MoreActions.svelte'
   import NewQuote from './NewQuote.svelte'  
   import QuotesStatus from './QuotesStatus.svelte'
+  import Api from './Api.svelte'
   
   export let quotes = []
 
+  let generatedQuote = '';
   let quotesStatus                   // reference to QuotesStatus instance
 
   $: newQuoteId = quotes.length ? Math.max(...quotes.map(q => q.id)) + 1 : 1
@@ -48,10 +50,19 @@
   <!-- Filter -->
   <FilterButton bind:filter />
 
+  <Api on:quoteGenerated={e => generatedQuote = e.detail.quote} />
+
   <!-- QuotesStatus -->
   <QuotesStatus bind:this={quotesStatus} {quotes} />
 
   <!-- Quotes -->
+
+  {#if generatedQuote}
+    <div class="quote-card">
+      <p class="quote-text">{generatedQuote}</p>
+    </div>
+  {/if}
+  
   <ul class="quote-list stack-large" aria-labelledby="list-heading">
   {#each filterQuotes(filter, quotes) as quote (quote.id)}
     <li class="quote">

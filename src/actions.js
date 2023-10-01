@@ -1,4 +1,3 @@
-// actions.js
 export function selectOnFocus(node) {
   if (node && typeof node.select === 'function' ) {               // make sure node is defined and has a select() method
     const onFocus = event => node.select()                        // event handler
