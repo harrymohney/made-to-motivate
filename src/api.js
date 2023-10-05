@@ -1,29 +1,21 @@
-import axios from 'axios';
+// const apiKey = 'D5UhI4sBO5rREBGt1DXFAw==i906RbBKWjqo4bts';
 
-const apiKey = '967c8abd76msh268b0b032e7b608p18783bjsnfbec53bd0d0a';
+// function getQuote(category) {
+//   return fetch(`https://api.api-ninjas.com/v1/quotes?category=${category}`, {
+//     headers: {
+//       'X-Api-Key': apiKey,
+//     },
+//   })
+//     .then((response) => {
+//       if (!response.ok) {
+//         throw new Error(`API request failed with status code ${response.status}`);
+//       }
+//       return response.json();
+//     })
+//     .then((data) => {
+//       console.log('Response from API:', data);
+//       return data;
+//     });
+// }
 
-const api = axios.create({
-  baseURL: 'https://healthruwords.p.rapidapi.com/v1/',
-  headers: {
-    'X-RapidAPI-Key': apiKey,
-    'X-RapidAPI-Host': 'healthruwords.p.rapidapi.com',
-  },
-});
-
-export async function getQuote() {
-  try {
-    const response = await api.get('quotes/', {
-      params: {
-        t: 'Wisdom',
-        maxR: '1',
-        size: 'medium',
-        id: '731',
-      },
-    });
-    return response.data;
-  } catch (error) {
-    throw error;
-  }
-}
-
-export default api;
+// export { getQuote };

@@ -1,5 +1,5 @@
-<script lang="ts">
-  export let quotes
+<script>
+  export let quotes;
 
   $: totalQuotes = quotes.length
   $: completedQuotes = quotes.filter(quote => quote.completed).length
@@ -10,4 +10,12 @@
 
 </script>
 
-<h2 id="list-heading" bind:this={headingEl} tabindex="-1">{completedQuotes} out of {totalQuotes} items completed</h2>
+<h2 id="list-heading" bind:this={headingEl} tabindex="-1">{completedQuotes} out of {totalQuotes} items selected</h2>
+
+<style>
+  /* Add your styles for the component here */
+  h2 {
+    font-size: 20px;
+    color: #333;
+  }
+</style>
