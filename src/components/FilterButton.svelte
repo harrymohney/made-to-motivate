@@ -15,36 +15,7 @@
   </button>
   <button class="btn toggle-btn" class:btn__primary={filter === 'completed'} aria-pressed={filter === 'completed'} on:click={()=> filter = 'completed'} >
     <span class="visually-hidden">Show</span>
-    <span>Completed</span>
+    <span>Selected</span>
     <span class="visually-hidden">tasks</span>
   </button>
 </div>
-
-<!-- <style>
-  .filters {
-    display: flex;
-    justify-content: center;
-    margin: 20px 0;
-  }
-
-  .btn {
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-size: 16px;
-    margin: 0 10px;
-    background-color: #007bff;
-    color: #fff;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-
-  .btn:hover {
-    background-color: #0056b3;
-  }
-
-  .btn[aria-pressed="true"] {
-    background-color: #0056b3;
-  }
-</style> -->

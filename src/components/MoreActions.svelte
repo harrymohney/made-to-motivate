@@ -21,32 +21,3 @@
   <button type="button" class="btn btn__primary" 
     disabled={completedQuotes === 0} on:click={removeCompleted}>Remove selected</button>
 </div>
-
-<!-- <style>
-  .btn-group {
-    display: flex;
-    justify-content: space-between;
-    margin-top: 20px;
-  }
-
-  .btn {
-    padding: 12px 24px;
-    border: none;
-    cursor: pointer;
-    text-transform: uppercase;
-    font-size: 16px;
-    background-color: #333;
-    color: #fff;
-    border-radius: 5px;
-    transition: background-color 0.3s;
-  }
-
-  .btn:disabled {
-    background-color: #ccc;
-    cursor: not-allowed;
-  }
-
-  .btn:hover {
-    background-color: #555;
-  }
-</style> -->

@@ -1,7 +1,7 @@
 import { writable } from 'svelte/store'
 import { localStore } from './localStore.js'
 
-export const alert = writable('Welcome to the Quote list app!')
+export const alert = writable('Welcome to the Quote app!')
 
 const initialQuotes = [
   { id: 1, name: 'Add a quote', completed: true },

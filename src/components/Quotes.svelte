@@ -1,14 +1,10 @@
 <script>
-  // import { onMount } from 'svelte';
   import FilterButton from './FilterButton.svelte';
   import Quote from './Quote.svelte';
   import MoreActions from './MoreActions.svelte';
   import NewQuote from './NewQuote.svelte';
   import QuotesStatus from './QuotesStatus.svelte';
   import { alert } from '../stores.js'
-  // import Api from './Api.svelte'
-  
-  // import { writable } from 'svelte/store';
   
   export let quotes = []
 
@@ -91,40 +87,3 @@
   />
 
 </div>
-
-<!-- <style>
-  /* Add your global styles here */
-  body {
-    font-family: Arial, sans-serif;
-    background-color: #f2f2f2;
-    margin: 0;
-    padding: 0;
-  }
-
-  main {
-    max-width: 800px;
-    margin: 20px auto;
-    padding: 20px;
-    background-color: #fff;
-    border-radius: 10px;
-    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  }
-
-  h1 {
-    font-size: 36px;
-    color: #333;
-    text-align: center;
-  }
-
-  .quote-list {
-    list-style: none;
-    margin: 0;
-    padding: 0;
-  }
-
-  .default-text {
-    font-size: 18px;
-    color: #666;
-    text-align: center
-  }
-</style> -->

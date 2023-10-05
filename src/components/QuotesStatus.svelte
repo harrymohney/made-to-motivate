@@ -13,7 +13,6 @@
 <h2 id="list-heading" bind:this={headingEl} tabindex="-1">{completedQuotes} out of {totalQuotes} items selected</h2>
 
 <style>
-  /* Add your styles for the component here */
   h2 {
     font-size: 20px;
     color: #333;
