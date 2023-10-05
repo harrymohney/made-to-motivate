@@ -1,108 +1,71 @@
-# This repo is no longer maintained. Consider using `npm init vite` and selecting the `svelte` option or — if you want a full-fledged app framework — use [SvelteKit](https://kit.svelte.dev), the official application framework for Svelte.
+# Quote App
 
----
+The Quote Generator App is a simple web application that allows users to generate and manage motivational quotes. Users can create, edit, delete, and filter quotes based on their motivation levels. It's a great tool for keeping track of inspiring quotes that keep you going.
 
-# svelte app
+# Screenshot
+<img src="./public/img/image-2.png" height="300px">
+<img src="./public/img/image-1.png" height="300px">
+<img src="./public/img/image-3.png" height="300px">
+<img src="./public/img/image-4.png" height="300px">
 
-This is a project template for [Svelte](https://svelte.dev) apps. It lives at https://github.com/sveltejs/template.
+# Technologies Used
 
-To create a new project based on this template using [degit](https://github.com/Rich-Harris/degit):
-
-```bash
-npx degit sveltejs/template svelte-app
-cd svelte-app
-```
-
-*Note that you will need to have [Node.js](https://nodejs.org) installed.*
-
-
-## Get started
-
-Install the dependencies...
-
-```bash
-cd svelte-app
-npm install
-```
-
-...then start [Rollup](https://rollupjs.org):
-
-```bash
-npm run dev
-```
-
-Navigate to [localhost:8080](http://localhost:8080). You should see your app running. Edit a component file in `src`, save it, and reload the page to see your changes.
-
-By default, the server will only respond to requests from localhost. To allow connections from other computers, edit the `sirv` commands in package.json to include the option `--host 0.0.0.0`.
-
-If you're using [Visual Studio Code](https://code.visualstudio.com/) we recommend installing the official extension [Svelte for VS Code](https://marketplace.visualstudio.com/items?itemName=svelte.svelte-vscode). If you are using other editors you may need to install a plugin in order to get syntax highlighting and intellisense.
-
-## Building and running in production mode
-
-To create an optimised version of the app:
-
-```bash
-npm run build
-```
-
-You can run the newly built app with `npm run start`. This uses [sirv](https://github.com/lukeed/sirv), which is included in your package.json's `dependencies` so that the app will work when you deploy to platforms like [Heroku](https://heroku.com).
+- Svelte
+- JavaScript
+- HTML
+- CSS
+<br>
 
 
-## Single-page app mode
+# Getting Started
 
-By default, sirv will only respond to requests that match files in `public`. This is to maximise compatibility with static fileservers, allowing you to deploy your app anywhere.
+### Trello Board
+- https://trello.com/b/q0CkniDD/p2-workflow 
+### App Link
+- https://get-me-fit-dev-2b4dfc1e9975.herokuapp.com/
+1. Click the "Generate Quote" button to fetch a new quote.
+2. Enter a motivational quote and author in the input fields and click "Add" to add a custom quote.
+3. Use the filter buttons to filter quotes based on their completion status.
+4. Click the "Edit" button to edit a quote, or the "Delete" button to remove a quote.
+5. Use the "Check All" and "Uncheck All" buttons to mark all quotes as completed or active.
+6. Click the "Remove Completed" button to remove all completed quotes.
 
-If you're building a single-page app (SPA) with multiple routes, sirv needs to be able to respond to requests for *any* path. You can make it so by editing the `"start"` command in package.json:
+# Application Features
 
-```js
-"start": "sirv public --single"
-```
+1. Generate Quotes: Click the "Generate Quote" button to fetch a new motivational quote from an external API.
 
-## Using TypeScript
+2. Add Quotes: Add your own motivational quotes to the list by entering them in the input field and clicking the "Add" button.
 
-This template comes with a script to set up a TypeScript development environment, you can run it immediately after cloning the template with:
+3. Edit Quotes: Edit existing quotes by clicking the "Edit" button on each quote card. Update the quote text and author name.
 
-```bash
-node scripts/setupTypeScript.js
-```
+4. Delete Quotes: Remove quotes from the list by clicking the "Delete" button on each quote card.
 
-Or remove the script via:
+5. Filter Quotes: Filter quotes by "All," "Active," or "Completed" using the filter buttons at the top of the page.
 
-```bash
-rm scripts/setupTypeScript.js
-```
+6. Check/Uncheck All: Quickly mark all quotes as completed or active using the "Check All" and "Uncheck All" buttons in the "More Actions" section.
 
-If you want to use `baseUrl` or `path` aliases within your `tsconfig`, you need to set up `@rollup/plugin-alias` to tell Rollup to resolve the aliases. For more info, see [this StackOverflow question](https://stackoverflow.com/questions/63427935/setup-tsconfig-path-in-svelte).
+7. Remove Completed Quotes: Remove all completed quotes from the list using the "Remove Completed" button in the "More Actions" section.
 
-## Deploying to the web
+# Application Features
+1. Generate Quotes: Click the "Generate Quote" button to fetch a new motivational quote from an external API.
 
-### With [Vercel](https://vercel.com)
+2. Add Quotes: Add your own motivational quotes to the list by entering them in the input field and clicking the "Add" button.
 
-Install `vercel` if you haven't already:
+3. Edit Quotes: Edit existing quotes by clicking the "Edit" button on each quote card. Update the quote text and author name.
 
-```bash
-npm install -g vercel
-```
+4. Delete Quotes: Remove quotes from the list by clicking the "Delete" button on each quote card.
 
-Then, from within your project folder:
+5. Filter Quotes: Filter quotes by "All," "Active," or "Completed" using the filter buttons at the top of the page.
 
-```bash
-cd public
-vercel deploy --name my-project
-```
+6. Check/Uncheck All: Quickly mark all quotes as completed or active using the "Check All" and "Uncheck All" buttons in the "More Actions" section.
 
-### With [surge](https://surge.sh/)
+7. Remove Completed Quotes: Remove all completed quotes from the list using the "Remove Completed" button in the "More Actions" section.
 
-Install `surge` if you haven't already:
 
-```bash
-npm install -g surge
-```
+# Future Application Updates
 
-Then, from within your project folder:
-
-```bash
-npm run build
-surge public my-project.surge.sh
-```
-# made-to-motivate
+- Add user authentication to allow multiple users to manage their own set of quotes.
+- Implement data persistence to save quotes across sessions.
+- Add categories or tags to quotes for better organization.
+- Allow users to share their favorite quotes on social media.
+- Implement a search feature to search for specific quotes or authors.

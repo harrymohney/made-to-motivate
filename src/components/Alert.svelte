@@ -1,4 +1,4 @@
-<script>
+<!-- <script>
   import { onDestroy } from "svelte";
   import { alert } from "../stores.js";
   import { fly } from "svelte/transition";
@@ -67,4 +67,4 @@
     width: 1.4rem;
     margin-right: 0.5rem;
   }
-</style>
+</style> -->
