@@ -9,7 +9,7 @@
 </script> -->
 <script>
   import Quotes from './components/Quotes.svelte'
-	import Alert from './components/Alert.svelte'
+	// import Alert from './components/Alert.svelte'
 
   import { quotes } from './stores.js'
 </script>

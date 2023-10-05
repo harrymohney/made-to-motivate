@@ -2,7 +2,8 @@
   import { onMount } from 'svelte';
   import { getQuote } from '../api.js';
 
-  let quote = '';
+  let author = '';
+  let quoteText = '';
   let isLoading = false;
 
   async function generateQuote() {
@@ -11,7 +12,8 @@
       const data = await getQuote();
       console.log('Response from API:', data);
       if (data && data.length > 0 && data[0].text) {
-        quote = data[0].text;
+        quoteText = data[0].text;
+        author = data[0].author; // Add author field
       } else {
         console.error('Invalid response from API:', data);
       }
@@ -28,6 +30,7 @@
 </script>
 
 <style>
+  /* Add your CSS styles for the component here */
   .quote-card {
     background-color: #f2f2f2;
     border-radius: 10px;
@@ -40,6 +43,12 @@
     font-size: 20px;
     margin-bottom: 10px;
     color: #333;
+  }
+
+  .quote-author {
+    font-size: 16px;
+    margin-top: 5px;
+    color: #666;
   }
 
   .quote-button {
@@ -67,7 +76,8 @@
   {#if isLoading}
     <p>Loading...</p>
   {:else}
-    <p class="quote-text">{quote}</p>
+    <p class="quote-text">{quoteText}</p>
+    <p class="quote-author">- {author}</p>
     <button class="quote-button" on:click={generateQuote}>Generate Quote</button>
   {/if}
 </div> -->
