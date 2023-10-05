@@ -1,4 +1,7 @@
 # Quote App
+### Deploy 
+
+- https://made-to-motivate-9aj1tonak-harrymohney.vercel.app/
 
 The Quote Generator App is a simple web application that allows users to generate and manage motivational quotes. Users can create, edit, delete, and filter quotes based on their motivation levels. It's a great tool for keeping track of inspiring quotes that keep you going.
 
@@ -18,13 +21,18 @@ The Quote Generator App is a simple web application that allows users to generat
 - CSS
 <br>
 
+## Resources
+
+- https://teambuilding.com/blog/success-quotes
+- https://developer.mozilla.org/en-US/docs/Learn/Tools_and_testing/Client-side_JavaScript_frameworks/Svelte_getting_started
+- https://scottspence.com/posts/sveltekit-contact-form-example-with-airtable
 
 # Getting Started
 
 ### Trello Board
 - https://trello.com/b/hl0nrkDH/e-commerce-capstone
 ### App Link
-- 
+- https://made-to-motivate-9aj1tonak-harrymohney.vercel.app/
 1. Click the "Remove Selected" button to remove all selected quotes.
 2. Enter a motivational quote and author in the input fields and click "Add" to add a custom quote.
 3. Use the filter buttons to filter quotes based on their completion status.
@@ -53,3 +61,6 @@ The Quote Generator App is a simple web application that allows users to generat
 - Add categories or tags to quotes for better organization.
 - Allow users to share their favorite quotes on social media.
 - Implement a search feature to search for specific quotes or authors.
+
+## Deploy
+- https://made-to-motivate-9aj1tonak-harrymohney.vercel.app/
