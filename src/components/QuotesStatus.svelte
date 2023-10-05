@@ -10,7 +10,7 @@
 
 </script>
 
-<h2 id="list-heading" bind:this={headingEl} tabindex="-1">{completedQuotes} out of {totalQuotes} items selected</h2>
+<h2 id="list-heading" bind:this={headingEl} tabindex="-1">{completedQuotes} out of {totalQuotes} favorites selected</h2>
 
 <style>
   h2 {

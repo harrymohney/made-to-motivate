@@ -10,7 +10,7 @@
   </button>
   <button class="btn toggle-btn" class:btn__primary={filter === 'active'} aria-pressed={filter === 'active'} on:click={()=> filter = 'active'} >
     <span class="visually-hidden">Show</span>
-    <span>Active</span>
+    <span>Favorites</span>
     <span class="visually-hidden">tasks</span>
   </button>
   <button class="btn toggle-btn" class:btn__primary={filter === 'completed'} aria-pressed={filter === 'completed'} on:click={()=> filter = 'completed'} >
